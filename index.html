@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b05f4c9c1f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+        *{box-sizing:border-box;}
+        body{
+            margin:0;
+            padding:0;
+            background-color:#f1f1f1;
+            font-family: "Raleway", sans-serif;
+        }
+        .aside{
+            position:fixed;
+            top:0;
+            left:0;
+            background-color: white;
+            max-width:300px;
+            height:100%;
+            overflow:auto;
+        }
+        .asideimg{
+            padding:15px;
+        }
+        #dark{
+            color:darkcyan
+        }
+        .hover{
+            width:100%;
+        }
+        .navp{
+            list-style:none;
+        }
+        .navp li{
+            width:100%;
+            padding:3px;
+        }
+        .navp li p{
+            margin-left:15px;
+        }
+        .navp li:hover,.navp p:hover{
+            background-color:grey;
+        }
+        .navsoc{
+            padding:15px;
+        }
+        .navsoc i{
+            margin:3px;
+        }
+        .navsoc i:hover{
+            opacity:0.7;
+        }
+        #saba a{
+            text-decoration:none;
+            color:black;
+            transition:0.7s ease;
+        }
+        #saba a:hover{
+            color:crimson;
+        }
+        .main{
+            max-width:1500px;
+            margin:auto;
+        }
+        .maincontent{
+            margin-left:310px;
+        }
+        .navli{
+            list-style:none;
+            display:flex;
+        }
+        .navli li:not(#notsquare,#notwhite){
+            background-color:white;
+            margin:5px;
+            padding:10px;
+        }
+        .navli #notsquare{
+            padding:10px;
+            margin:5px;
+        }
+        .navli #notwhite{
+            background-color: black;
+            margin:5px;
+            padding:10px;
+            color:white;
+        }
+        .navli li:hover:not(#notsquare){
+            background-color:grey;
+            color:black;
+        }
+        .linecont,.linecont2{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap:5px;
+            margin-bottom: 15px;
+        }
+        .linecont .phcont{
+            background-color:white;
+            padding:15px;
+            border-radius:6px;
+            flex:33.33%;
+        }
+        .linecont2 .phcont{
+            background-color:white;
+            padding:15px;
+            border-radius:6px;
+            flex:33.33%;
+        }
+        .phcont img{
+            opacity:1;
+            transition: 0.7s ease;
+        }
+        .phcont img:hover{
+            opacity:0.7;
+        }
+        .pagination{
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .pagination a{
+            text-decoration:none;
+            color:black;
+            padding:7px;
+        }
+        .pagination #pagactive{
+            background-color:black;
+            color:white;
+        }
+        .pagination a:hover:not(#pagactive){
+            background-color: black;
+            color:white;
+        }
+        .pagination #pagactive:hover{
+            background-color:black;
+            color:white;
+        }
+        .mineabout{
+            display:flex;
+            flex-direction: row;
+            gap:5px;
+        }
+        .mineabout .saba{
+            flex:50%;
+        }
+        .mineabout img{
+            border-radius:6px;
+        }
+        .ccc{
+            background-color:#aaa;
+            width:100%;
+            height:30px;
+        }
+        .ccc .darkcyan{
+            background-color:darkcyan;
+            width:95%;
+            text-align: center;
+            color:white;
+            height:30px;
+            line-height: 200%;
+        }
+        .ccc .darkcyan1{
+            background-color:darkcyan;
+            width:85%;
+            text-align: center;
+            color:white;
+            height:30px;
+            line-height: 200%;
+        }
+        .ccc .darkcyan2{
+            background-color:darkcyan;
+            width:80%;
+            text-align:center;
+            color:white;
+            height:30px;
+            line-height: 200%;
+        }
+        #but1{
+            border:none;
+            background-color:darkcyan;
+            color:white;
+            padding:13px;
+            transition:0.7s ease;
+        }
+        #but1:hover{
+            background-color:#bbb;
+            color:black;
+            border-radius:6px;
+        }
+        .premiums{
+            border:1px solid #aaa;
+            opacity:0.7;
+            transition:0.7s ease-in-out;
+        }
+        .premiums:hover{
+            opacity:1;
+        }
+        .premiums .header{
+            background-color:black;
+            color:white;
+            text-align:center;
+            padding:22px;
+        }
+        .premiums p,.premiums h3{
+            text-align:center;
+        }
+        .premiums .mainsuggest{
+            background-color:white;
+            padding-top:10px;
+        }
+        .premiums .footer{
+            text-align: center;
+            padding:13px;
+        }
+        .premiums .but2{
+            background-color:darkcyan;
+            color:white;
+            border:none;
+            padding:10px;
+            width:100px;
+            transition:0.7s ease;
+        }
+        .premiums .but2:hover{
+            background-color:black;
+            color:white;
+            transform: translateY(-10px);
+            border-radius:6px;
+        }
+        .premiums .header2{
+            background-color:darkcyan;
+            color:white;
+            text-align:center;
+            padding:22px;
+        }
+        .premiums .header3{
+            background-image:linear-gradient(gold,rgb(210, 249, 16));
+            text-align:center;
+            padding:22px;
+            color:white;
+        }
+        .suggest{
+            display:flex;
+            flex-direction:row;
+            gap:10px;
+            flex-wrap:nowrap;
+        }
+        .suggest .premiums{
+            flex:33.33%;
+        }
+        .contactinfo{
+            background-color:grey;
+            margin-left:310px;
+            padding:15px;
+            margin-top:15px;
+        }
+        .iconinfo{
+            background-color:rgb(58, 58, 58);
+        }
+        .iconinfo p,.iconinfo2 p{
+            color:#f1f1f1;
+            text-align: center;
+        }
+        .iconmain{
+            display:flex;
+            flex-direction:row;
+        }
+        .iconmain .iconinfo{
+            flex:33.33%;
+        }
+        .iconmain .iconinfo2{
+            flex:33.33%;
+        }
+        .iconinfo2{
+            background-color:darkcyan;
+        }
+        .iconinfo p i,.iconinfo2 p i{
+            font-size:34px;
+        }
+        input[type=text]{
+            width:100%;
+            padding:10px;
+            border:none;
+            margin-bottom:10px;
+        }
+        #but3{
+            border:none;
+            color:white;
+            background-color:black;
+            padding:9px;
+            width:150px;
+            transition: 0.7s ease;
+        }
+        #but3:hover{
+            background-color:#aaa;
+            color:black;
+            border-radius:6px;
+        }
+        .footerinfo{
+            margin-left:310px;
+            background-color:rgb(55, 54, 54);
+            padding:15px;
+        }
+        .imgul{
+            list-style:none;
+        }
+        .footerflex{
+            display: flex;
+            flex-direction: row;
+            flex-wrap:nowrap;
+        }
+        .footerflex .footermain{
+            flex:33.33%;
+        }
+        .ultag{
+            list-style: none;
+            padding:0;
+            margin:0;
+        }
+        .ultag li:not(#activetag){
+            float:left;
+            margin:5px;
+            padding:4px;
+            color:black;
+            background-color:#9e9e9e;
+        }
+        .ultag #activetag{
+            background-color:black;
+            color:white;
+            float:left;
+            padding:4px;
+            margin:5px;
+        }
+        .imageflex{
+            display:flex;
+            flex-direction: row;
+            flex-wrap:nowrap;
+            justify-content: flex-start;
+        }
+        .imageflex .halfimg{
+            flex:50%;
+        }
+        .imgul li img{
+            margin:10px;
+        }
+        .imgul li:hover{
+            background-color:#aaa;
+        }
+        .footermain p, .footermain h4, .footermain h2{
+            color:white;
+        }
+        .footermain p a{
+            text-decoration: none;
+            color:white;
+            transition:0.7s ease;
+        }
+        .footermain p a:hover{
+            color:crimson;
+        }
+        .Allinfo{
+            margin-left:310px;
+            background-color:black;
+            padding:20px;
+            text-align: center;
+        }
+        .Allinfo p{
+            color:white;
+        }
+        .Allinfo p a{
+            text-decoration: none;
+            color:white;
+            transition:0.7s ease;
+        }
+        .Allinfo p a:hover{
+            color:crimson;
+        }
+        .notvisible{
+            list-style:none;
+            display:none;
+            padding:15px;
+            margin:15px;
+            margin-bottom:55px;
+        }
+        .notvisible #left{
+            float:left;
+            font-size:42px;
+            transition: 0.7s ease;
+        }
+        .notvisible #left:hover{
+            color:white;
+            background-color:black;
+            padding:10px;
+            border-radius:7px;
+        }
+        .notvisible #right{
+            float:right;
+            transition: 0.7s ease;
+        }
+        .notvisible #right:hover{
+           padding:9px;
+        }
+        @media only screen and (max-width:990px){
+            .aside{
+                display:none;
+            }
+            .maincontent,.contactinfo,.footerinfo,.Allinfo{
+                margin:10px;
+            }
+        }
+        @media only screen and (max-width:600px){
+            .disnon{
+                display:none;
+            }
+            .linecont,.linecont2,.mineabout,.suggest,.iconmain{
+                flex-direction:column;
+            }
+            .footerflex{
+                flex-direction: column-reverse;
+            }
+            #but3{
+                width:100%;
+                border-radius:6px;
+            }
+            .notvisible{
+                display:block;
+            }
+            *{
+                transition: all 5s ease;
+                -moz-transition: all 5s ease;
+                -webkit-transition: all 5s ease;
+                -o-transition:all 5s ease;
+            }
+        }
+
+    </style>
+<div class="main">
+    <div class="aside">
+        <div class="asideimg">
+        <img style="width:45%;border-radius:7px;" src="https://scontent.ftbs10-1.fna.fbcdn.net/v/t39.30808-6/315376580_578763920918196_1682926249772201037_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeE5czAWZqRKZgdrBxZ3yOv6fdLTQ-y9YSR90tND7L1hJEl9kjHiIb4UIxOaULoAuQTWn2-TuPMtjvltyt6uPgWf&_nc_ohc=rlgEmyqXTiUAX_I_sm9&tn=1U_4CYgt7CCacYvZ&_nc_ht=scontent.ftbs10-1.fna&oh=00_AfAF-coXkJP84ZAXkxfbbSBiXP7pcHga2PkTzWvZoTEHgQ&oe=638D16BB">
+        <h4>PORTFOLIO</h4>
+        <p id="saba">Created by <a href="#">Saba Fesvianidze</a></p></div>
+
+        <div class="navp">
+        <li><p id="dark"><span><i class="fa-solid fa-globe"></i> </span> PORTFOLIO</p></li>
+        <li><p><span><i class="fa-sharp fa-solid fa-user"></i></span> About</p></li>
+        <li><p><span> <i class="fa-sharp fa-solid fa-envelope"></i></span> Contact</p></li>
+        </div><br>
+        <div class="navsoc">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-snapchat"></i>
+        <i class="fa-brands fa-pinterest-p"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i></div>
+    </div>
+    <div class="notvisible">
+        <li id="left"><i class="fa-sharp fa-solid fa-bars"></i></li>
+        <li id="right">
+            <img style="width:60px;border-radius:50%;" src="https://scontent.ftbs10-1.fna.fbcdn.net/v/t1.6435-9/196676527_185574673570458_6884888205481089217_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_eui2=AeHfEOy-4dxwJG-0PrSSpzdKZwDqdt_ojFdnAOp23-iMV8LVJEjbZ_IW-tTk5ikCOq9-2ECIpaEWJ9GFb2RMnTX_&_nc_ohc=3zCIBVwyb3IAX8QL9hX&tn=1U_4CYgt7CCacYvZ&_nc_ht=scontent.ftbs10-1.fna&oh=00_AfCX6eRZ6uPla5vLhgSp2H4gokqgdS-i6CQFvPDAfzlqdg&oe=63AEEC6D">
+        </li>
+    </div>
+    <div class="maincontent">
+        <div class="header">
+            <h1>My Portfolio </h1>
+            <div class="navli">
+                <li id="notsquare">Filter:</li>
+                <li id="notwhite">ALL</li>
+                <li><span><i class="fa-sharp fa-solid fa-gem"></i></span> Design</li>
+                <li class="disnon"><span><i class="fa-sharp fa-solid fa-image"></i></span> Photos</li>
+                <li class="disnon"><span><i class="fa-sharp fa-solid fa-paintbrush"></i></span> Art</li>
+            </div>
+        </div><hr style="height:2px;border:none;color:grey;background-color:grey;border-radius:13px;">
+        <div class="linecont">
+            <div class="phcont">
+                <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/mountains.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+            <div class="phcont">
+                <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/lights.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+            <div class="phcont">
+                <img  style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/nature.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+        </div>
+        <div class="linecont2">
+            <div class="phcont">
+                <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/p1.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+            <div class="phcont">
+                <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/p2.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+            <div class="phcont">
+                <img  style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/p3.jpg">
+                <p>Lorem Ipsum</p>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                 porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+        </div><br><br>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a id="pagactive" href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">&raquo;</a>
+        </div><br>
+
+        <div class="mineabout">
+            <div class="saba">
+                <img style="width:100%;height:auto;" src="https://scontent.ftbs10-1.fna.fbcdn.net/v/t1.6435-9/176168401_147076677420258_6379270776002618008_n.jpg?stp=dst-jpg_s851x315&_nc_cat=107&ccb=1-7&_nc_sid=da31f3&_nc_eui2=AeFcuqOUbaDGVOT4qq1sGuLhrtlLPXoAF1Ku2Us9egAXUvfEnm3_hKi8Fodx9drq6AysmEF279VfQf1TIjbbBSzq&_nc_ohc=H9AMzyC54CoAX9UfQQ6&tn=1U_4CYgt7CCacYvZ&_nc_ht=scontent.ftbs10-1.fna&oh=00_AfAdaAnhq__kuJAFGTYMJTV9F76cnMh1Awf7uLC8N259iA&oe=63AF0312">
+            </div>
+            <div class="saba">
+                <img style="width:100%;height:auto;" src="https://scontent.ftbs10-1.fna.fbcdn.net/v/t39.30808-6/315376580_578763920918196_1682926249772201037_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeE5czAWZqRKZgdrBxZ3yOv6fdLTQ-y9YSR90tND7L1hJEl9kjHiIb4UIxOaULoAuQTWn2-TuPMtjvltyt6uPgWf&_nc_ohc=rlgEmyqXTiUAX_I_sm9&tn=1U_4CYgt7CCacYvZ&_nc_ht=scontent.ftbs10-1.fna&oh=00_AfAF-coXkJP84ZAXkxfbbSBiXP7pcHga2PkTzWvZoTEHgQ&oe=638D16BB">
+            </div>
+        </div>
+        <div class="aboutme">
+            <h3>About Me</h3>
+            <p>Just me, myself and I, exploring the universe of unknownment.
+             I have a heart of love and an interest of lorem ipsum and mauris
+             neque quam blog. I want to share my world with you. Praesent 
+             tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+             porta lectus vitae, ultricies congue gravida diam non fringilla.
+             Praesent tincidunt sed tellus ut rutrum. Sed vitae justo 
+             condimentum, porta lectus vitae, ultricies congue gravida diam 
+             non fringilla.</p>
+        </div><br>
+
+        <h3>Technical Skills</h3>
+        <p>Photography</p>
+        <div class="ccc"><div class="darkcyan">95%</div></div>
+        <p>Web Design</p>
+        <div class="ccc"><div class="darkcyan1">85%</div></div>
+        <p>Photoshop</p>
+        <div class="ccc"><div class="darkcyan2">80%</div></div><br>
+        <button id="but1"><span><i class="fa-sharp fa-solid fa-download"></i></span> Download Resume</button><br>
+
+        <p>How much I charge</p>
+
+        <div class="suggest">
+            <div class="premiums">
+                <div class="header">Basic</div>
+               <div class="mainsuggest"><p>Web Design</p><hr>
+                <p>Photography</p><hr>
+                <p>1GB Storage</p><hr>
+                <p>Mail Support</p><hr>
+                <h3>$ 10</h3>
+                <p>per month</p><hr></div>
+                <div class="footer">
+                    <button class="but2">Sign up</button>
+                </div>
+            </div>
+
+            <div class="premiums">
+                <div class="header2">Pro</div>
+               <div class="mainsuggest"><p>Web Design</p><hr>
+                <p>Photography</p><hr>
+                <p>50GB Storage</p><hr>
+                <p>Endless Support</p><hr>
+                <h3>$ 25</h3>
+                <p>per month</p><hr></div>
+                <div class="footer">
+                    <button class="but2">Sign up</button>
+                </div>
+            </div>
+
+            <div class="premiums">
+                <div class="header3">Premium</div>
+               <div class="mainsuggest"><p>Web Design</p><hr>
+                <p>Photography</p><hr>
+                <p>Unlimited Storage</p><hr>
+                <p>Endless Support</p><hr>
+                <h3>$ 50</h3>
+                <p>per month</p><hr></div>
+                <div class="footer">
+                    <button class="but2">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contactinfo">
+        <h4>Contact Me</h4>
+        <div class="iconmain">
+            <div class="iconinfo">
+           <p><i class="fa-sharp fa-solid fa-house"></i></p>
+           <p>email@email.com</p>
+        </div>
+
+        <div class="iconinfo2">
+            <p><i class="fa-sharp fa-solid fa-location-dot"></i></p>
+            <p>email@email.com</p>
+         </div>
+
+         <div class="iconinfo">
+            <p><i class="fa-sharp fa-solid fa-phone"></i></p>
+            <p>email@email.com</p>
+         </div>
+        </div><hr>
+
+        <form action="#">
+            <label for="name">Name</label>
+            <input id="name" type="text">
+            <label for="email">Email</label>
+            <input id="email" type="text">
+            <label for="message">Message</label>
+            <input id="message" type="text">
+            <button id="but3"><i class="fa-sharp fa-solid fa-paper-plane"></i> Send Message</button>
+        </form>
+    </div>
+
+    <div class="footerinfo">
+        <div class="footerflex">
+            <div class="footermain">
+                <h2>FOOTER</h2>
+                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo
+                     condimentum, porta lectus vitae, ultricies congue gravida
+                      diam non fringilla.</p>
+                      <p>Created by <a href="#">Saba Fesvianidze</a></p>
+            
+                </div>
+
+                <div class="footermain">
+                    <h2>BLOG POSTS</h2>
+                    <div class="imgul">
+                    <li>
+                        <div class="imageflex">
+                        <img style="width:70px;height:auto;" src="https://www.w3schools.com/w3images/workshop.jpg">
+                        <div><h4>Lorem</h4>
+                        <p>Sed mattis nunc</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imageflex">
+                        <img style="width:70px;height:auto;" src="https://www.w3schools.com/w3images/gondol.jpg">
+                        <div><h4>Ipsum</h4>
+                        <p>Praes tinci sed</p></div>
+                        </div>
+                    </li>
+                </div>
+                </div>
+
+                <div class="footermain">
+                    <h2>POPULAR TAGS</h2>
+                    <div class="ultag">
+                        <li id="activetag">Travel</li>
+                        <li>New York</li>
+                        <li>London</li>
+                        <li>IKEA</li>
+                        <li>NORWAY</li>
+                        <li>DIY</li>
+                        <li>Ideas</li>
+                        <li>Baby</li>
+                        <li>Family</li>
+                        <li>News</li>
+                        <li>Clothing</li>
+                        <li>Shopping</li>
+                        <li>Sports</li>
+                        <li>Games</li>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="Allinfo">
+        <p>Created by<a href="#"> Saba fesvianidze</a></p>
+    </div>
+
+
+</div>
+
+ 
+</body>
+</html>
